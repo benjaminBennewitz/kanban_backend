@@ -26,11 +26,14 @@ SECRET_KEY = 'django-insecure-^(9s!36a^9mmc%@g4lhzal0mj6($#i5s87u0%qwp74$l59cit0
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost'
+    'localhost',
+    '127.0.0.1',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'localhost:4200'
+    'http://localhost:4200',
+    'http://localhost', 
+    'http://127.0.0.1',
 ]
 
 # Application definition
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'ticketeer',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +144,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+# settings.py
+AUTH_USER_MODEL = 'auth.User'

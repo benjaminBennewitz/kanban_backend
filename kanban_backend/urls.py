@@ -13,12 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# kanban_backend/urls.py
 from django.contrib import admin
 from django.urls import path
 
-from ticketeer.views import loginView
+from ticketeer.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', loginView.as_view()),
+    path('login/', LoginView.as_view(), name='login'),
 ]

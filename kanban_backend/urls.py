@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from ticketeer import views
 from ticketeer.views import LoginView, RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('tasks/', views.TaskListCreateAPIView.as_view(), name='task-list-create'),
+    path('tasks/<int:pk>/', views.TaskRetrieveUpdateDestroyAPIView.as_view(), name='task-detail'),
 ]

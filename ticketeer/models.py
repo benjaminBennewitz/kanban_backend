@@ -3,16 +3,17 @@ from django.db import models
 
 from kanban_backend import settings
 
-class Task(models.Model):
+class TicketeerTask(models.Model):
     PRIORITY_CHOICES = [
         ('low', 'Low'),
         ('medium', 'Medium'),
-        ('high', 'High'),
+        ('urgent', 'Urgent'),
     ]
 
     STATUS_CHOICES = [
+        ('urgent', 'Urgent'),
         ('todo', 'To Do'),
-        ('inprogress', 'In Progress'),
+        ('inProgress', 'In Progress'),
         ('done', 'Done'),
     ]
 
@@ -22,7 +23,7 @@ class Task(models.Model):
     )
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=200)
-    content = models.CharField(max_length=500)
+    content = models.TextField(max_length=500)
     date = models.DateField(default=datetime.date.today)
     prio = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='low')
     done = models.BooleanField(default=False)

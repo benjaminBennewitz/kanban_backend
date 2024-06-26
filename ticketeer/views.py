@@ -1,3 +1,4 @@
+from ticketeer.models import TicketeerTask
 from django.shortcuts import render
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -6,11 +7,11 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from rest_framework import authentication, permissions
+from rest_framework import authentication, permissions, viewsets
 from django.contrib.auth.models import User
 
 from rest_framework import generics
-from .serializers import RegisterSerializer
+from .serializers import RegisterSerializer, TaskSerializer
 
 class LoginView(ObtainAuthToken):
   def post(self, request, *args, **kwargs):
@@ -31,4 +32,11 @@ class RegisterView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         return Response({'message': 'Registration successful'}, status=response.status_code)
+    
+class TaskListCreateAPIView(generics.ListCreateAPIView):
+    queryset = TicketeerTask.objects.all()
+    serializer_class = TaskSerializer
 
+class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = TicketeerTask.objects.all()
+    serializer_class = TaskSerializer

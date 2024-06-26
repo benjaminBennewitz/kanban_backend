@@ -1,4 +1,5 @@
 # serializers.py
+from ticketeer.models import TicketeerTask
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -18,3 +19,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             last_name=validated_data['last_name']
         )
         return user
+    
+    
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TicketeerTask
+        fields = '__all__'

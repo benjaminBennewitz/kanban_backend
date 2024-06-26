@@ -1,5 +1,5 @@
-from .models import Task
+from ticketeer.models import TicketeerTask
 from django.contrib import admin
 
 # Register your models here.
-admin.site.register(Task)
+admin.site.register(TicketeerTask)

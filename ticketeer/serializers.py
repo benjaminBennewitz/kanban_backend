@@ -25,6 +25,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = TicketeerTask
         fields = '__all__'
+        read_only_fields = ('author',)
         
 class TaskStatusSerializer(serializers.ModelSerializer):
     class Meta:

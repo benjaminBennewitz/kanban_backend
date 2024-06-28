@@ -26,7 +26,6 @@ class TicketeerTask(models.Model):
     content = models.TextField(max_length=500)
     date = models.DateField(default=datetime.date.today)
     prio = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='low')
-    done = models.BooleanField(default=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='todo')
     doTime = models.IntegerField(default=0)  # This field stores time in minutes or any other unit you prefer
 

@@ -25,3 +25,8 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = TicketeerTask
         fields = '__all__'
+        
+class TaskStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TicketeerTask
+        fields = ['status']

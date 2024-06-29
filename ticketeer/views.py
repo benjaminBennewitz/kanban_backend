@@ -8,6 +8,7 @@ from rest_framework import generics, status
 from .serializers import RegisterSerializer, TaskSerializer, TaskStatusSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import PermissionDenied
+from django.views.decorators.csrf import csrf_exempt
 
 
 class LoginView(ObtainAuthToken):
@@ -26,7 +27,9 @@ class LoginView(ObtainAuthToken):
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
+    permission_classes = []  # Keine Authentifizierung erforderlich
 
+    @csrf_exempt
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
         return Response({'message': 'Registration successful'}, status=response.status_code)

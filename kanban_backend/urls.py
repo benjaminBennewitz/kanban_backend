@@ -1,31 +1,31 @@
-"""kanban_backend URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-# kanban_backend/urls.py
 from django.contrib import admin
 from django.urls import path
 
 from ticketeer import views
 from ticketeer.views import LoginView, RegisterView
 
+# URL patterns for the Ticketeer application
+# This configuration routes URLs to views.
+
 urlpatterns = [
+    # Admin site URL
     path('admin/', admin.site.urls),
+
+    # Login endpoint
     path('login/', views.LoginView.as_view(), name='login'),
+
+    # Registration endpoint
     path('register/', views.RegisterView.as_view(), name='register'),
+
+    # Endpoint for listing and creating tasks
     path('tasks/', views.TaskListCreateAPIView.as_view(), name='task-list-create'),
-    path('tasks/<int:pk>/', views.TaskRetrieveUpdateDestroyAPIView.as_view(), name='task-detail'),
-    path('tasks/<int:pk>/status/', views.TaskStatusUpdateAPIView.as_view(), name='task-status-update'),
+
+    # Endpoint for creating a task (alternative method)
     path('tasks/create/', views.create_task, name='create'),
+
+    # Endpoint for retrieving, updating, and deleting a specific task by ID
+    path('tasks/<int:pk>/', views.TaskRetrieveUpdateDestroyAPIView.as_view(), name='task-detail'),
+
+    # Endpoint for updating the status of a specific task by ID
+    path('tasks/<int:pk>/status/', views.TaskStatusUpdateAPIView.as_view(), name='task-status-update'),
 ]

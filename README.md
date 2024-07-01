@@ -23,7 +23,7 @@ If you have questions or run into problems, you can:
 ## Project Management and Contributions
 
 This project is managed by B². The main contributors are:
-- [Your Name](https://github.com/benjaminBennewitz) - Project lead and main developer
+- Benjamin Bennewitz (https://github.com/benjaminBennewitz) - Project lead and main developer
 
 
 ## Installation and Setup
